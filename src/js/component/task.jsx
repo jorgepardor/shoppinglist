@@ -9,9 +9,6 @@ const Task = () => {
 		event.preventDefault();
 		console.log(event.target.value);
 		setText(event.target.value);
-		this.setText({
-			value: "",
-		});
 	};
 
 	const Delete = (item) =>
@@ -30,7 +27,7 @@ const Task = () => {
 				</h1>
 			</div>
 
-			<div class="input-group mb-3 d-flex justify-content-between px-3">
+			<div className="input-group mb-3 d-flex justify-content-between px-3">
 				<input
 					type="text"
 					className="form-control"
@@ -51,9 +48,9 @@ const Task = () => {
 				{task.map((value, index) => (
 					<ul className="list-group px-2">
 						<li
-							className="list-group-item d-flex justify-content-between mb-2"
-							key={index}>
-							<span>{value}</span>
+							key={value}
+							className="list-group-item d-flex justify-content-between mb-2">
+							{value}
 
 							<button
 								className="btn btn-outline-danger btn-sm"

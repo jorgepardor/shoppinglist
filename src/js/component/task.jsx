@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-//create your first component
 const Task = () => {
 	const [task, setTask] = useState([]);
 	const [text, setText] = useState("");
@@ -15,8 +14,9 @@ const Task = () => {
 		setTask(task.filter((deleteMe) => item != deleteMe));
 	// console.log(index);
 
-	const submit = () => {
+	const submit = (e) => {
 		setTask([...task, text]);
+		setText("");
 	};
 
 	return (
@@ -35,11 +35,19 @@ const Task = () => {
 					aria-label="List your ingredients here"
 					aria-describedby="button-addon1"
 					onChange={handleChange}
+					value={text}
+					onKeyDown={(e) => {
+						{
+							e.key === "Enter" ? submit(e) : "";
+						}
+					}}
 				/>
 				<button
 					className="btn btn-outline-success btn-sm"
 					id="button-addon2"
-					onClick={submit}>
+					onClick={(e) => {
+						submit(e);
+					}}>
 					Add item ✔️
 				</button>
 			</div>
@@ -60,8 +68,27 @@ const Task = () => {
 						</li>
 					</ul>
 				))}
+
+				<div>
+					{task.length === 0 ? (
+						<p className="text-center">
+							✨✨ Horray, no tasks here! ✨✨
+						</p>
+					) : task.length === 1 ? (
+						<p className="text-center">
+							Tienes <span className="fw-bold">una</span> tarea
+						</p>
+					) : (
+						<p className="text-center">
+							Tienes{" "}
+							<span className="fw-bold">{task.length}</span>{" "}
+							tareas por hacer
+						</p>
+					)}
+				</div>
 			</div>
 		</div>
 	);
 };
+
 export default Task;

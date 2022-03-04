@@ -72,17 +72,18 @@ const Task = () => {
 				<div>
 					{task.length === 0 ? (
 						<p className="text-center">
-							✨✨ Horray, no tasks here! ✨✨
+							✨✨ Hooray, no tasks here! ✨✨
 						</p>
 					) : task.length === 1 ? (
 						<p className="text-center">
-							Tienes <span className="fw-bold">una</span> tarea
+							You have <span className="fw-bold">one</span>{" "}
+							pending task
 						</p>
 					) : (
 						<p className="text-center">
-							Tienes{" "}
+							You have{" "}
 							<span className="fw-bold">{task.length}</span>{" "}
-							tareas por hacer
+							pending tasks
 						</p>
 					)}
 				</div>
